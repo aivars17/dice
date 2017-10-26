@@ -46,7 +46,7 @@
   background-size:16px 16px;
   color: orange;
   text-shadow: 1px 2px 3px #F00;
-
+  padding: 20px;
 }
 body {
   padding: 0px;
@@ -57,4 +57,11 @@ body {
   linear-gradient(155deg, #d00 23px, transparent 23px);
   background-size: 58px 58px; 
   background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+}
+#results {
+  background-color: lightgrey;
+  padding: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  display: none;
 }

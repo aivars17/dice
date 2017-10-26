@@ -14,60 +14,32 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col up">
+			<div class="col up text-center">
 				<h1>Welcome to Dice game</h1>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col" id="pirmas"></div>
-			<div class="col" id="antras"></div>
-			<div class="col" id="trecias"></div>
-			
+			<div class="col text-center">
+				<img id="dice0" height="42" width="42" src="pic/6.png">
+				<img id="dice1" height="42" width="42" src="pic/6.png">
+				<img id="dice2" height="42" width="42" src="pic/6.png">
+			</div>
 		</div>
 		<div class="row">
-			<div class="col">
-				<button class="btn btn-lg btn-primary col-md-2 btn-block">Pradėti žaidimą</button>
-				<button id="ridenti" onclick="shuffle()" class="btn col-md-2 btn-lg btn-primary btn-block">Ridenti kauiukus</button>
+			<div class="col" id="demo"></div>
+		</div>
+		<div class="row">
+			<div class="col text-center">
+				<button class="btn  btn-primary btn-block">Pradėti žaidimą</button>
+				<button id="shuffle" class="btn   btn-primary btn-block">Ridenti kauliukus</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center">
+				<div id="results"></div>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		 roll = 0;
-		
-		function shuffle() {
-			if (roll < 4) {
-				roll++
-			var skaiciai = [];
-			var pirmas = document.getElementById("pirmas");
-			var pirmas_count = Math.floor((Math.random() * 6)+1);
-			skaiciai.push(pirmas_count);
-			pirmas.innerHTML = "<img src=pic/"+pirmas_count+".png>"
-			var antras = document.getElementById("antras");
-			var antras_count = Math.floor((Math.random() * 6)+1)
-			skaiciai.push(antras_count);
-			antras.innerHTML = "<img src=pic/"+antras_count+".png>";
-			var trecias = document.getElementById("trecias");
-			var trecias_count = Math.floor((Math.random() * 6)+1);
-			skaiciai.push(trecias_count);
-			trecias.innerHTML = "<img src=pic/"+trecias_count+".png>";
-			var sorted_arr = skaiciai.slice().sort(); // You can define the comparing function here. 
-                                     // JS by default uses a crappy string compare.
-                                     // (we use slice to clone the array so the
-                                // original array won't be modified)
-			var results = [];
-			for (var i = 0; i < skaiciai.length - 1; i++) {
-			    if (sorted_arr[i + 1] == sorted_arr[i]) {
-			        results.push(sorted_arr[i]);
-			    }
-			}
-			var win = ((results[0]+results[0])*0.1);
-			var win = win.toFixed(2);	
-			console.log(win);
-		}else {
-			console.log("gameover");
-		}
-		}
-	</script>
 	<script src="js/regscript.js"></script>
 </body>
 </html>
