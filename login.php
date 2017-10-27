@@ -14,9 +14,9 @@ if (isset($_POST['nickname'])){
 	}
 	print_r($user_data);
 	if(password_verify($_POST['password'], $user_data['password'])){
-		$_SESSION['username'] = $_POST['nickname'];
+		$_SESSION['nickname'] = $_POST['nickname'];
 		$_SESSION['last_login'] = date("Y-m-d H:m:s");
-			setcookie("sausainukas",$user_data['username'], time() + (60 * 2), "/"); // 86400 = 1 day
+			setcookie("sausainukas",$user_data['nickname'], time() + (60 * 2), "/"); // 86400 = 1 day
 			setcookie("lastTime",date('Y-m-d h:i:sa'), time() + (60 * 2), "/"); // 86400 = 1 day
 			header('Location: index.php');
 		} else {
@@ -41,7 +41,7 @@ if (isset($_POST['nickname'])){
 			<?php
 			echo $error;
 			?>
-			<label for="inputEmail" class="sr-only">Username</label>
+			<label for="inputNick" class="sr-only">Nickname</label>
 			<input type="text"  name="nickname" class="form-control" placeholder="Nickname" required autofocus>
 			<label for="inputPassword" class="sr-only">Password</label>
 			<input type="password"  name="password" class="form-control" placeholder="Password" required>

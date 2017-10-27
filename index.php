@@ -1,5 +1,12 @@
 <?php
+session_start();
 
+
+if (isset($_SESSION['nickname'])) {
+	$alert = "Welcome back, ". $_SESSION['nickname'];
+} else {
+	header('Location: login.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,13 +23,25 @@
 		<div class="row">
 			<div class="col up text-center">
 				<h1>Welcome to Dice game</h1>
+				<div class="row ">
+					<div class="col">
+						<div class="row justify-content-end">
+							<div class="col ">
+								
+							<h6><?php echo $alert;?></h6></div></div>
+						<div class="row align-items-start">
+							<div class="col-md-10"></div>
+							<div class="col " ><a  href="logout.php" type="button" class=" btn btn-outline-danger">Logout</a></div></div>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
 		<div class="row">
-			<div class="col text-center">
-				<img id="dice0" height="42" width="42" src="pic/6.png">
-				<img id="dice1" height="42" width="42" src="pic/6.png">
-				<img id="dice2" height="42" width="42" src="pic/6.png">
+			<div class="col text-center" style="padding: 50px;">
+				<img id="dice0" height="60" width="60" src="pic/6.png">
+				<img id="dice1" height="60" width="60" src="pic/6.png">
+				<img id="dice2" height="60" width="60" src="pic/6.png">
 			</div>
 		</div>
 		<div class="row">
@@ -30,8 +49,8 @@
 		</div>
 		<div class="row">
 			<div class="col text-center">
-				<button class="btn  btn-primary btn-block">Pradėti žaidimą</button>
-				<button id="shuffle" class="btn   btn-primary btn-block">Ridenti kauliukus</button>
+				<button type="button" id="newGame" class="btn btn-lg btn-primary">New game</button>
+				<button type="button" id="shuffle" class="btn btn-lg btn-primary">Roll</button>
 			</div>
 		</div>
 		<div class="row">

@@ -15,7 +15,8 @@ function checkpass(){
 }
 roll = 0;
 lucky = [];
-win = 0;
+wins = 0;
+wins.toFixed(2);
 $("#shuffle").click(function(){
 	 skaiciai = [];
 	 
@@ -36,12 +37,12 @@ $("#shuffle").click(function(){
 	console.log("gameover");
 	document.getElementById("shuffle").disabled = true;
 	console.log(lucky);
-	for (var i = 0; i < lucky.length; win += lucky[i++]);
-	document.getElementById("results").innerHTML = "Total won "+win+"EUR";
-	bam(win);
-}
-		
+	for (var i = 0; i < lucky.length; wins += lucky[i++]);
+	document.getElementById("results").innerHTML = wins.toFixed(2);
 	
+	bam();
+}
+			
 //console.log(lucky);
 });
 
@@ -64,22 +65,25 @@ function check(){
 		}
 }
 
-function bam(win){
-	$.getJSON("game.php",
-	{
-		win: win,
-	},
-	 function(result){
-
-	 		
-			$.each(result['users'], function(i, field){
-				document.getElementById("results").innerHTML = "Taip";
-	// 			$("#user_table_body").append("<tr><td>" + field.id + "</td><td>" + field.name + "</td><td>" + field.surname + "</td><td>" + field.email + "</td><td>" + field.phone + "</td></tr>");
-	 });
-
-});
+function bam(){
+	$.post( "game.php", 
+		{ win: wins }, function( data ) {
+  		console.log(data);
 }
+);
+	}
 
+$("#newGame").click(function(){
+	for (var i = 0; i < 3; i++) {
+		document.getElementById("dice"+[i]).src = "pic/6.png";
+	}
+	document.getElementById("shuffle").disabled = false;
+	document.getElementById("results").innerHTML = "";
+	document.getElementById("results").style.display = "none";
+	roll = 0;
+	lucky = [];
+	wins = 0;
+})
 
 	/*	
 function shuffle() {
