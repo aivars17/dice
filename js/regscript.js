@@ -16,7 +16,6 @@ function checkpass(){
 roll = 0;
 lucky = [];
 wins = 0;
-wins.toFixed(2);
 $("#shuffle").click(function(){
 	 skaiciai = [];
 	 
@@ -67,11 +66,11 @@ function check(){
 
 function bam(){
 	$.post( "game.php", 
-		{ win: wins }, function( data ) {
+		{ win: wins.toFixed(2) }, function( data ) {
   		console.log(data);
-}
+};
 );
-	}
+	};
 
 $("#newGame").click(function(){
 	for (var i = 0; i < 3; i++) {
@@ -83,9 +82,12 @@ $("#newGame").click(function(){
 	roll = 0;
 	lucky = [];
 	wins = 0;
-})
+});
+
+
 
 	/*	
+}
 function shuffle() {
 	skaiciai = [];
 	if (roll < 3) {

@@ -4,24 +4,30 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "dice";
-
+session_start();
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if (isset($_POST['win'])) {
-       $stmt = $conn->prepare("UPDATE users SET win = :win WHERE id=2");
-     $stmt->bindParam(':win', $_POST['win']);
-    // execute the query
-    $stmt->execute();
+        $stmt = $conn->prepare("INSERT INTO stats (nickname, win) VALUES (:nickname, :win)");
+        $stmt->bindParam(':win', $_POST['win']);
+        $stmt->bindParam(':nickname', $_SESSION['nickname']);
+    // // execute the query
+     $stmt->execute();
+    // // echo a message to say the UPDATE succeeded
+     echo $stmt->rowCount() . " records UPDATED successfully";
+    } else if(isset($_GET['me'])) {
+        $stmt = $conn->prepare("SELECT * FROM stats WHERE nickname = :nickname ORDER by time");
+        $stmt->bindParam(':nickname', $_SESSION['nickname']);
+        $stmt->execute();
+        $response = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
 
-    // echo a message to say the UPDATE succeeded
-    echo $stmt->rowCount() . " records UPDATED successfully";
     }
 }
-
     // Prepare statement
-    //$response['users'] = $stmt->fetch(PDO::FETCH_ASSOC);
+    
 catch(PDOException $e)
     {
     echo $stmt . "<br>" . $e->getMessage();
@@ -29,9 +35,5 @@ catch(PDOException $e)
 
 $conn = null;
 
-
-
-
-
-echo json_encode($users);
+echo json_encode($response);
 ?>
