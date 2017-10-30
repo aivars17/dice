@@ -44,21 +44,21 @@
   radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
   background-color:#282828;
   background-size:16px 16px;
-  padding: 20px;
-  color: orange;
-  text-shadow: 1px 2px 3px #F00;
+  padding: 20px; 
 }
 
-body {
+.up h1, h6 {
+  color: orange;
+   text-shadow: 1px 2px 3px #F00;
+}
+
+.indexbody {
+  margin: 0px;
   height: 100%;
   padding: 0px;
   background-color: silver;
-  background-image: linear-gradient(335deg, #b00 23px, transparent 23px),
-  linear-gradient(155deg, #d00 23px, transparent 23px),
-  linear-gradient(335deg, #b00 23px, transparent 23px),
-  linear-gradient(155deg, #d00 23px, transparent 23px);
-  background-size: 58px 58px; 
-  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+  background-image: url("../pic/dice.jpg");
+  background-size: 100%;
 }
 
 #results {
@@ -68,7 +68,22 @@ body {
   font-weight: bold;
   display: none;
   color: orange;
-  
   border-radius: 10px;
-  
+}
+
+.form-signin-heading {
+  color: white;
+}
+@media screen and (max-width: 480px) {
+    #left {display: none;}
+    .bam {margin: auto;}
+
+}
+.stats {
+  background-color: lightgrey;
+}
+#gameover {
+  font-weight: bold;
+  font-size: 25px;
+  display: none;
 }
